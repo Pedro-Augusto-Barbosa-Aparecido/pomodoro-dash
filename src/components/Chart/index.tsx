@@ -7,9 +7,11 @@ Chart.register(CategoryScale);
 import { app, firestore } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { ChartData, Timer } from "../../@types/timer";
+import { EmptyDash } from "../EmptyDash";
 
 export function Echart () {
   const [timers, setTimers] = useState<ChartData | null>(null);
+  const [labelToFilter, setLabelToFilter] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -59,21 +61,32 @@ export function Echart () {
       return "red";
   });
 
-  return (
-    <Bar 
-      data={{
-        labels: timers?.labels,
-        datasets: [{
-          label: "Time in seconds",
-          data: timers?.datasets,
-          backgroundColor: backgroundColors
-        }]
-      }}
+  if (!timers) {
+    return <EmptyDash />
+  }
 
-      options={{
-        
-      }}
-       
-    />
+  return (
+      <Bar 
+        data={{
+          labels: timers?.labels,
+          datasets: [{
+            label: "Time in seconds",
+            data: timers?.datasets,
+            backgroundColor: backgroundColors
+          }]
+        }}
+        options={{
+          onClick(e, item) {
+            if (item.length !== 0) {
+              const label = timers.labels[item[0].index];
+              setLabelToFilter(label);
+              console.log(label)
+            }
+          },
+          onHover(ev, elements) {
+            
+          }
+        }}
+      />
   );
 }

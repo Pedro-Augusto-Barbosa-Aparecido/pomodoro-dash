@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import {CategoryScale} from 'chart.js'; 
@@ -8,11 +8,12 @@ import { app, firestore } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { ChartData, Timer } from "../../@types/timer";
 import { EmptyDash } from "../EmptyDash";
+import { DashboardContext } from "../../context/Dashboard";
 
 export function Echart () {
   const [timers, setTimers] = useState<ChartData | null>(null);
-  const [labelToFilter, setLabelToFilter] = useState<string>("");
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const { changeCurrentProject, toggleModal } = useContext(DashboardContext);
 
   useEffect(() => {
     const dbInstance = collection(firestore, "timer");
@@ -79,8 +80,8 @@ export function Echart () {
           onClick(e, item) {
             if (item.length !== 0) {
               const label = timers.labels[item[0].index];
-              setLabelToFilter(label);
-              console.log(label)
+              changeCurrentProject(label);
+              toggleModal();
             }
           },
           onHover(ev, elements) {

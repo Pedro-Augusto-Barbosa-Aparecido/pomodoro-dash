@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const EmptyContainer = styled.div`
-  color: #4444;
+  color: black !important;
   
   display: flex;
   flex-direction: column;

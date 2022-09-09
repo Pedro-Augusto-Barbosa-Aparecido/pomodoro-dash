@@ -5,7 +5,7 @@ import { EmptyContainer } from "./styles";
 export function EmptyDash () {
   return (
     <EmptyContainer>
-      <CircleWavyQuestion color="#CAAAAA" size={100} weight="thin" />
+      <CircleWavyQuestion color="#4444" size={100} weight="thin" />
       <span>Nenhum dado encontrado</span>
     </EmptyContainer>
   )

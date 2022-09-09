@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 import React from "react";
 
 import { DashboardContextProvider } from "../context/Dashboard"
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider, Center } from "native-base";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

@@ -53,11 +53,11 @@ export function Echart () {
   
   const backgroundColors = timers?.datasets.map(day => {
     if ((day > 0) && (day <= 40)) 
-      return "#31b";
+      return "#be123c";
     else if ((day > 40) && (day <= 100))
-      return "#F03dae";
+      return "#064e3b";
     else if (day > 100)
-      return "#FAD321";
+      return "#22c55e";
     else
       return "red";
   });

@@ -10,12 +10,14 @@ export const ModalContainer = styled.div`
   height: 100vh;
   width: 100%;
 
-`;
+  & > div {
+    width: 800px;
+    height: 500px;
+  }
 
-export const Content = styled.div`
-  width: 800px;
-  height: 400px;
+  svg {
+    cursor: pointer;
 
-  background-color: black;
+  }
 
 `;

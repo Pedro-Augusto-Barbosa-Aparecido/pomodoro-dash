@@ -1,4 +1,5 @@
-import { Placeholder, CircleWavyQuestion } from "phosphor-react";
+import React from "react";
+import { CircleWavyQuestion } from "phosphor-react";
 import { EmptyContainer } from "./styles";
 
 export function EmptyDash () {

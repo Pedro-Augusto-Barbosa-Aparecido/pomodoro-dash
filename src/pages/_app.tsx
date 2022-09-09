@@ -2,15 +2,20 @@ import "../styles/globals.css";
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from "styled-components";
 
+import React from "react";
+
 import { DashboardContextProvider } from "../context/Dashboard"
+import { NativeBaseProvider } from "native-base";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={{}}>
-      <DashboardContextProvider>
-        <Component {...pageProps} />
-      </DashboardContextProvider>
-    </ThemeProvider>
+    <NativeBaseProvider>
+      <ThemeProvider theme={{}}>
+        <DashboardContextProvider>
+          <Component {...pageProps} />
+        </DashboardContextProvider>
+      </ThemeProvider>
+    </NativeBaseProvider>
   )
 }
 
